@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <p>
+            press button for random password
+        </p>
+        <button id="button1" onclick="function1()">
+            Press here
+            
+        </button>
+        <p id="demo">
+
+        </p>
+        <script>
+            function function1(){
+                var password = "";
+                var len = 8; 
+                for (let i = 0; i < len; i++) {
+                    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    var num =  (Math.floor(Math.random() * chars.length));
+                    var char = chars.charAt(num);
+
+                    password += char;
+                    console.log(char);
+                }
+                
+                
+                document.getElementById("demo").innerHTML = password;
+            } 
+
+            
+        </script>
+
+
+
+
+        
+    </body>
+</html>
