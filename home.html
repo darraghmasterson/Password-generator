@@ -6,6 +6,21 @@
         <p>
             press button for random password
         </p>
+        <select name="Length" id="len">
+            <option> Length</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
         <button id="button1" onclick="function1()">
             Press here
             
@@ -16,9 +31,10 @@
         <script>
             function function1(){
                 var password = "";
-                var len = 8; 
+                var len = document.getElementById("len");
+                len = len.value; 
                 for (let i = 0; i < len; i++) {
-                    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()?{}[]';
                     var num =  (Math.floor(Math.random() * chars.length));
                     var char = chars.charAt(num);
 
