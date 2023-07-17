@@ -1,13 +1,68 @@
+<!DOCTYPE html>
 <html>
     <head>
-
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+            
+            h1 {
+                color: #333333;
+            }
+            
+            p {
+                margin-top: 30px;
+                font-size: 18px;
+            }
+            
+            select {
+                padding: 8px;
+                font-size: 16px;
+            }
+            
+            button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: #ffffff;
+                font-size: 18px;
+                border: none;
+                cursor: pointer;
+            }
+            
+            button:hover {
+                background-color: #45a049;
+            }
+            
+            #demo {
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            
+            #copyButton {
+                margin-top: 10px;
+                padding: 10px 20px;
+                background-color: #008CBA;
+                color: #ffffff;
+                font-size: 18px;
+                border: none;
+                cursor: pointer;
+            }
+            
+            #copyButton:hover {
+                background-color: #006F8B;
+            }
+        </style>
     </head>
     <body>
-        <p>
-            press button for random password
-        </p>
+        <h1>Random Password Generator</h1>
+        <p>Press the button to generate a random password:</p>
+        
         <select name="Length" id="len">
-            <option> Length</option>
+            <option>Length</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -21,37 +76,42 @@
             <option value="11">11</option>
             <option value="12">12</option>
         </select>
-        <button id="button1" onclick="function1()">
-            Press here
-            
-        </button>
-        <p id="demo">
-
-        </p>
+        
+        <button id="button1" onclick="function1()">Generate</button>
+        
+        <p id="demo"></p>
+        
+        <button id="copyButton" onclick="copyToClipboard()">Copy</button>
+        
         <script>
-            function function1(){
+            function function1() {
                 var password = "";
                 var len = document.getElementById("len");
-                len = len.value; 
+                len = len.value;
+                
                 for (let i = 0; i < len; i++) {
                     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()?{}[]';
-                    var num =  (Math.floor(Math.random() * chars.length));
+                    var num = (Math.floor(Math.random() * chars.length));
                     var char = chars.charAt(num);
 
                     password += char;
-                    console.log(char);
                 }
                 
-                
                 document.getElementById("demo").innerHTML = password;
-            } 
-
+            }
             
+            function copyToClipboard() {
+                var password = document.getElementById("demo").innerHTML;
+                
+                var tempInput = document.createElement("input");
+                tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+                tempInput.value = password;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                
+            }
         </script>
-
-
-
-
-        
     </body>
 </html>
